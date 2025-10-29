@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Anyeli Fashion - Moda moderna y elegante para mujeres seguras de sí mismas">
+  <meta name="keywords" content="moda, ropa, vestidos, tendencias, fashion, boutique, elegancia, mujer">
+  <title>✨ Anyeli Fashion ✨👗</title>
+  <link rel="shortcut icon" href="img/favicon.png">
+
+  <!-- Fuentes y Estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      color: #333;
+      background-color: #fff;
+      line-height: 1.6;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background-color: #fff;
+      border-bottom: 3px solid #e91e63;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 60px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #e91e63;
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0 15px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff4081;
+    }
+
+    /* ---------- BANNER CARRUSEL ---------- */
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 85vh;
+      overflow: hidden;
+    }
+
+    .banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+
+    .banner img.activo {
+      opacity: 1;
+    }
+
+    .banner-texto {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px 40px;
+      border-radius: 10px;
+      backdrop-filter: blur(3px);
+    }
+
+    .banner-texto h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .banner-texto p {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    /* ---------- SECCIONES ---------- */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      color: #e91e63;
+      margin-bottom: 30px;
+      font-size: 2.2rem;
+    }
+
+    /* ---------- NOSOTROS ---------- */
+    #nosotros {
+      background-color: #fff5f8;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    #nosotros p {
+      max-width: 900px;
+      margin: 15px auto;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    #nosotros em {
+      color: #e91e63;
+      font-weight: 500;
+    }
+
+    /* ---------- COLECCIÓN ---------- */
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .columna-33 {
+      flex: 0 0 calc(33.333% - 30px);
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .columna-33:hover {
+      transform: translateY(-5px);
+    }
+
+    .columna-33 img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .bloque-contenido-servicio {
+      padding: 20px;
+    }
+
+    .bloque-contenido-servicio h3 {
+      color: #e91e63;
+      margin-bottom: 10px;
+    }
+
+    .boton {
+      display: inline-block;
+      padding: 10px 25px;
+      border-radius: 30px;
+      background-color: #e91e63;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .boton:hover {
+      background-color: #ff4081;
+    }
+
+    /* ---------- GALERÍA ---------- */
+    #galeria {
+      background-color: #fff;
+    }
+
+    #galeria img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.4s;
+      border-radius: 10px;
+    }
+
+    #galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    #galeria h4 {
+      margin-top: 10px;
+      color: #e91e63;
+    }
+
+    /* ---------- CONTACTENOS ---------- */
+    #contactenos {
+      background-color: #fff5f8;
+      padding: 80px 20px;
+    }
+
+    .contacto-contenedor {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .formulario {
+      flex: 1 1 45%;
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .formulario h3 {
+      color: #e91e63;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .formulario input, .formulario textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .formulario button {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    .formulario button:hover {
+      background-color: #ff4081;
+    }
+
+    .mapa {
+      flex: 1 1 45%;
+      height: 400px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    /* ---------- REDES ---------- */
+    .redes {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .redes a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #e91e63;
+      font-size: 25px;
+      transition: color 0.3s;
+    }
+
+    .redes a:hover {
+      color: #ff4081;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 14px;
+    }
+
+    /* ---------- CONTADOR ---------- */
+    #contador {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: #E91E63;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 14px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #contador i {
+      font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .columna-33 {
+        flex: 0 0 100%;
+      }
+      nav a {
+        font-size: 16px;
+        margin: 0 8px;
+      }
+      .contacto-contenedor {
+        flex-direction: column;
+      }
+      .formulario, .mapa {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <a href="index.html"><img src="img/logo-moda.png" class="logo" alt="Anyeli Fashion"></a>
+      <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#coleccion">Colección</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contactenos">Contáctenos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BANNER PRINCIPAL -->
+  <section id="inicio" class="banner">
+    <img src="img/banner-principal.png" class="activo" alt="Moda elegante Anyeli 1">
+    <img src="img/banner-2l..jpg" alt="Moda moderna Anyeli 2">
+    <img src="img/banner3.jpg" alt="Moda casual Anyeli 3">
+    <div class="banner-texto">
+      <h1>✨ANYELI FASHION✨</h1>
+      <p>Estilo, elegancia y tendencia en cada prenda</p>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros">
+    <h2>Sobre Nosotros</h2>
+    <p>
+      En <strong>Anyeli Fashion</strong> creemos que la moda es más que vestir: es una forma de expresar 
+      quién eres y cómo te sientes. Nuestra marca nace del deseo de empoderar a las mujeres a través 
+      del estilo, ofreciendo prendas que reflejan elegancia, modernidad y autenticidad.
+    </p>
+    <p>
+      Cada colección está cuidadosamente seleccionada con las últimas tendencias internacionales,
+      priorizando materiales de calidad, cortes favorecedores y detalles que hacen la diferencia.
+      Nuestro objetivo es que cada mujer se sienta única, segura y hermosa con lo que lleva puesto.
+    </p>
+    <p>
+      <em>“Vístete con confianza, brilla con estilo y deja que tu esencia hable por ti.”</em>
+    </p>
+    <a href="#coleccion" class="boton">Ver colección</a>
+  </section>
+
+  <!-- COLECCIÓN -->
+  <section id="coleccion">
+    <h2>Nuestra Colección</h2>
+    <div class="row">
+      <div class="columna-33">
+        <img src="img/modelo1.png" alt="Vestido elegante">
+        <div class="bloque-contenido-servicio">
+          <h3>Vestidos</h3>
+          <p>"Diseños únicos para toda ocasión, combinando comodidad y elegancia".</p>
+        </div>
+      </div>
+      <div class="columna-33">
+        <img src="img/blusa1.jpg" alt="Blusa de moda">
+        <div class="bloque-contenido-servicio">
+          <h3>Blusas</h3>
+          <p>"Estilos modernos y frescos para cada temporada".</p>
+        </div>
+      </div>
+      <div class="columna-33">
+        <img src="img/pantalon-casual1.jpg" alt="Pantalón casual">
+        <div class="bloque-contenido-servicio">
+          <h3>Pantalones</h3>
+          <p>"Comodidad y estilo en cada diseño, perfectos para cualquier ocasión."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria">
+    <h2>Galería</h2>
+    <div class="row">
+      <div class="columna-33">
+        <img src="img/elegante.jpg" alt="Imagen 1">
+        <h4>Elegancia</h4>
+      </div>
+      <div class="columna-33">
+        <img src="img/casual.png" alt="Imagen 2">
+        <h4>Moda Actual</h4>
+      </div>
+      <div class="columna-33">
+        <img src="img/coleccion3.jpg" alt="Imagen 3">
+        <h4>Estilo Femenino</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTENOS -->
+  <section id="contactenos">
+    <h2>Contáctenos</h2>
+    <div class="contacto-contenedor">
+      <div class="formulario">
+        <h3>Envíanos un mensaje</h3>
+        <form id="form-contacto">
+          <input type="text" id="nombre" placeholder="Nombre completo" required>
+          <input type="email" id="email" placeholder="Correo electrónico" required>
+          <textarea id="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+          <button type="submit">Enviar Mensaje 💌</button>
+        </form>
+      </div>
+
+      <div class="mapa">
+        <iframe width="100%" height="400" frameborder="0"
+          src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=es&amp;q=Perú&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="redes">
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/51999999999" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:anyelifashion@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+  </section>
+
+  <!-- CONTADOR -->
+  <div id="contador">
+    <i class="fa-solid fa-eye"></i>
+    Visitas: <span id="visitas">0</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Anyeli Fashion - Todos los derechos reservados 💖</p>
+  </footer>
+
+  <script>
+    // Carrusel automático
+    let index = 0;
+    const imagenes = document.querySelectorAll('.banner img');
+    setInterval(() => {
+      imagenes[index].classList.remove('activo');
+      index = (index + 1) % imagenes.length;
+      imagenes[index].classList.add('activo');
+    }, 4000);
+
+    // Contador local
+    function contadorLocal() {
+      const contador = document.getElementById('visitas');
+      let visitas = localStorage.getItem('contadorAnyeli');
+      if (!visitas) {
+        visitas = 1;
+      } else {
+        visitas = parseInt(visitas) + 1;
+      }
+      localStorage.setItem('contadorAnyeli', visitas);
+      contador.textContent = visitas.toLocaleString('es-PE');
+    }
+    contadorLocal();
+
+    // Formulario
+    document.getElementById("form-contacto").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("💖 ¡Gracias por contactarnos! Te responderemos pronto.");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
